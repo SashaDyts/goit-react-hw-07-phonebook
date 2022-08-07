@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Filter = ({ value, addFilterValue }) => {
   return (
@@ -7,6 +8,11 @@ const Filter = ({ value, addFilterValue }) => {
       <input type="text" value={value} onChange={addFilterValue} />
     </label>
   );
+};
+
+Filter.propTypes = {
+  value: PropTypes.string,
+  addFilterValue: PropTypes.func.isRequired,
 };
 
 export default Filter;
