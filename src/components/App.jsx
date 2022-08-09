@@ -55,7 +55,7 @@ export class App extends Component {
       <>
         <h2>PhoneBook</h2>
 
-        <Form onSubmit={this.formSubmitHandler}></Form>
+        <Form onSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
         <Filter
           value={this.state.filter}
@@ -64,7 +64,7 @@ export class App extends Component {
         <ContactsList
           contacts={filteredContacts || this.state.contacts}
           deleteContact={this.deleteContact}
-        ></ContactsList>
+        />
       </>
     );
   }
