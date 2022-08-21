@@ -15,7 +15,11 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  width: 300px;
+  /* width: 300px; */
 
   margin-top: 10px;
+`;
+
+export const Button = styled.button`
+  cursor: pointer;
 `;
