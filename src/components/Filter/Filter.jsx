@@ -5,7 +5,13 @@ const Filter = ({ value, addFilterValue }) => {
   return (
     <label>
       <p>Find contacts by name</p>
-      <input type="text" value={value} onChange={addFilterValue} />
+      <input
+        type="text"
+        value={value}
+        onChange={e => {
+          addFilterValue(e.currentTarget.value);
+        }}
+      />
     </label>
   );
 };
