@@ -4,7 +4,7 @@ import {
   ContactListItem,
   DeleteContactBtn,
 } from './ContactsList.styled';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { removeContact } from 'redux/contacts/contacts-action';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilteredContacts } from 'redux/contacts/constacts-selectors';
