@@ -5,17 +5,24 @@ import {
   DeleteContactBtn,
 } from './ContactsList.styled';
 import PropTypes from 'prop-types';
+import { removeContact } from 'redux/contacts/contacts-action';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFilteredContacts } from 'redux/contacts/constacts-selectors';
 
-const ContactsList = ({ contacts, deleteContact }) => {
+const ContactsList = () => {
+  const contacts = useSelector(getFilteredContacts);
+
+  const dispatch = useDispatch();
+
   return (
     <ContactList>
-      {contacts.map(contact => {
+      {contacts.map(({ id, number, name }) => {
         return (
-          <ContactListItem key={contact.id}>
-            {contact.name}: {contact.number}
+          <ContactListItem key={id}>
+            {name}: {number}
             <DeleteContactBtn
               onClick={() => {
-                deleteContact(contact.id);
+                dispatch(removeContact(id));
               }}
             >
               Delete
@@ -27,15 +34,15 @@ const ContactsList = ({ contacts, deleteContact }) => {
   );
 };
 
-ContactsList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
-  deleteContact: PropTypes.func.isRequired,
-};
+// ContactsList.propTypes = {
+//   contacts: PropTypes.arrayOf(
+//     PropTypes.exact({
+//       id: PropTypes.string,
+//       name: PropTypes.string.isRequired,
+//       number: PropTypes.string.isRequired,
+//     })
+//   ),
+//   deleteContact: PropTypes.func.isRequired,
+// };
 
 export default ContactsList;
