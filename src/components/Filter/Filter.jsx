@@ -10,7 +10,7 @@ const Filter = () => {
   const filter = useSelector(getFilter);
   const contacts = useSelector(getFilteredContacts);
 
-  if (contacts.length < 1) {
+  if (contacts.length < 1 && filter === '') {
     return <p>Contacts list is empty</p>;
   }
 
