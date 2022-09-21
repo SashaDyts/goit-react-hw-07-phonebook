@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   ContactList,
   ContactListItem,
   DeleteContactBtn,
 } from './ContactsList.styled';
 // import PropTypes from 'prop-types';
-import { removeContact } from 'redux/contacts/contacts-slice';
+import {
+  removeContact,
+  fetchContacts,
+} from 'redux/contacts/contacts-operations';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilteredContacts } from 'redux/contacts/constacts-selectors';
 
@@ -13,6 +17,11 @@ const ContactsList = () => {
   const contacts = useSelector(getFilteredContacts);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('go');
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <ContactList>
