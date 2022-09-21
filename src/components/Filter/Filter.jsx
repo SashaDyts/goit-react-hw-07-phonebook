@@ -3,10 +3,17 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filter/filter-slice';
 import { getFilter } from 'redux/filter/filter-selectors';
+import { getFilteredContacts } from 'redux/contacts/constacts-selectors';
 
 const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(getFilter);
+  const contacts = useSelector(getFilteredContacts);
+
+  if (contacts.length < 1) {
+    return <p>Contacts list is empty</p>;
+  }
+
   return (
     <label>
       <p>Find contacts by name</p>
